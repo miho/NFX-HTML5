@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+
+    maven {
+        url 'https://dl.bintray.com/miho/NativeFX'
+    }
+}
+
+sourceCompatibility = '11'
+targetCompatibility = '11'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls']
+    //sdk = "$projectDir/deps/javafx-sdk/sdk/javafx-sdk-13/"
+}
+
+mainClassName = 'eu.mihosoft.nativefx.html5.SampleBrowser'
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    implementation 'eu.mihosoft.nativefx:nativefx:0.2.1'
+    implementation 'eu.mihosoft.nfxhtml5.nfxhtml5dist:nfx-html5-dist:2019.11.30.1'
+}
